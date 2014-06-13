@@ -48,43 +48,11 @@
 
         <!-- View: bits of templates that are triggered in the controller (at the bottom) -->
 
-        <h1 id="title">
-            <a href="index.html?<%= ctx.maybeRefParam %>">
-                Your prismic.io project
-            </a>
-        </h1>
-
-        <form action="search.html" method="GET">
+        <div id="body">
             <script type="text/template">
-                <input type="hidden" name="ref" value="<%= ctx.maybeRef %>">
-                <input type="text" name="q" value="">
-                <input type="submit" value="Search">
+                <%= doc.getStructuredText('blog.body').asHtml(ctx) %>
             </script>
-        </form>
-
-        <hr>
-
-        <h2 id="subtitle">
-            <script type="text/template">
-                <% if(docs.results.length > 0) { %>
-                    <%= docs.results.length %> documents
-                <% } else { %>
-                    No documents found
-                <% } %>
-            </script>
-        </h2>
-
-        <ul id="list">
-            <script type="text/template">
-                <% for(var i=0; i<docs.results.length; i++) { %>
-                    <li>
-                        <a href="<%= ctx.linkResolver(ctx, docs.results[i]) %>">
-                            <%= docs.results[i].slug %>
-                        </a>
-                    </li>
-                <% } %>
-            </script>
-        </ul>
+        </div>
 
         <footer>
             <script type="text/template">
@@ -101,13 +69,13 @@
 
                 Helpers.withPrismic(function(ctx) {
 
-                    ctx.api.form("everything").ref(ctx.ref).submit(function(err, docs) {
+                    ctx.api.form("everything").query('[[:d = at(document.id, "U5DWfjkAADgAK-rr")]]').ref(ctx.ref).submit(function(err, docs) {
 
                         if (err) { Configuration.onPrismicError(err); return; }
 
                         // Trigger the templates
-                        $('header, form, #title, #subtitle, #list, footer').render({
-                            docs: docs, 
+                        $('header, #body, footer').render({
+                            doc: docs.results[0], 
                             ctx: ctx
                         });
 
