@@ -1,0 +1,34 @@
+{
+  "name": "prismic-js-SDK",
+  "version": "1.0.10",
+  "homepage": "https://github.com/prismicio/javascript-kit",
+  "authors": [
+    "Prismic.io <contact@prismic.io>"
+  ],
+  "description": "Source Development Kit for the Prismic.io CMS API",
+  "main": "dist/prismic.io.js",
+  "keywords": [
+    "prismic",
+    "prismic.io",
+    "cms",
+    "content",
+    "api"
+  ],
+  "license": "Apache 2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "_release": "1.0.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.10",
+    "commit": "bbda8f64ff99e9276335020593d8f3f1ea93e444"
+  },
+  "_source": "git://github.com/prismicio/javascript-kit.git",
+  "_target": "~1.0.10",
+  "_originalSource": "prismic.io",
+  "_direct": true
+}
